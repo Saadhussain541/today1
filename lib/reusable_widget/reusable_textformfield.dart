@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:testing/reusable_widget/text_widget.dart';
@@ -19,7 +21,7 @@ class custom_field extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 30),
+      margin: EdgeInsets.symmetric(horizontal: 10),
       width: double.infinity,
       height: 50,
       padding: EdgeInsets.symmetric(vertical: 10,horizontal: 20),
@@ -43,14 +45,14 @@ class custom_field extends StatelessWidget {
             )),
             decoration: surfixneed==false?InputDecoration(
               label: text_custome(
-                text: "Enter Your Email",
+                text: "$label",
                 size: 16,
                 fontWeight: FontWeight.w400,
               ),
               floatingLabelBehavior: FloatingLabelBehavior.never,
               focusedBorder: InputBorder.none,
               border: InputBorder.none,
-              prefixIcon: Icon(Icons.email),
+              prefixIcon: prefixicon,
               focusColor: Colors.transparent,
               prefixIconColor: Colors.black,
             ):InputDecoration(

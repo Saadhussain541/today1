@@ -8,7 +8,11 @@ import 'package:testing/HomeScreen.dart';
 import 'package:testing/LoginScreen.dart';
 import 'package:testing/PageView/mainPageView.dart';
 import 'package:testing/RegisterScreen.dart';
+import 'package:testing/UserMain/main_home_navbar.dart';
+import 'package:testing/UserMain/main_screen.dart';
 import 'package:testing/firebase_options.dart';
+
+import 'UserMain/helpMenu.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +28,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: MainHome(),
     );
   }
 }
