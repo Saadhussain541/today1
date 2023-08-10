@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:testing/HomeScreen.dart';
 import 'package:testing/LoginScreen.dart';
+import 'package:testing/PageView/mainPageView.dart';
 import 'package:testing/RegisterScreen.dart';
 import 'package:testing/firebase_options.dart';
 
@@ -34,17 +36,26 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen>{
+
+  var val;
 
   // Splash Screen Timer Setting
 
+
+  void skipping_pageview()async{
+    SharedPreferences onetime = await SharedPreferences.getInstance();
+    val = onetime.get("done");
+  }
+
   @override
-  void initState() {
+  void initState(){
     // TODO: implement initState
+    skipping_pageview();
     Timer(
         Duration(seconds: 5),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => (FirebaseAuth.instance.currentUser!=null)?HomeScreen():LoginScreen())));
+            builder: (BuildContext context) => val==true?(FirebaseAuth.instance.currentUser!=null)?HomeScreen():LoginScreen():main_pageView())));
     super.initState();
   }
 
